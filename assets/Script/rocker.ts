@@ -23,11 +23,16 @@ export default class rocker extends cc.Component {
     stick_p: any
     play_p: any
 
+    ribid: cc.RigidBody
+
     onLoad () {
         if (this.Rocker && this.Rocker.active == true) {
             this.Rocker.active = false
         }
+        cc.director.getPhysicsManager().enabled = true
 
+        this.ribid = this.play.getComponent(cc.RigidBody)
+        
 		cc.director.getScheduler().schedule(this.updatePostion, this, 0.05, false)
     }
 
@@ -52,7 +57,10 @@ export default class rocker extends cc.Component {
 			if (len > this.Max_r * this.Max_r) {
 				touch_p.x = x / Math.sqrt(len) * this.Max_r
 				touch_p.y = y / Math.sqrt(len) * this.Max_r
-			}
+			}else {
+                touch_p.x = x
+                touch_p.y = y
+            }
 
             this.stick.setPosition(touch_p)
         },this);
@@ -71,11 +79,11 @@ export default class rocker extends cc.Component {
         
 		if (this.Rocker.active == true) {
 			let s = this.stick_p
-			let p = this.play_p
-			p.x += s.x * this.speed
-			p.y += s.y * this.speed
-			//console.log(s.x,s.y)
-			this.play.setPosition(p)
-		}  
+			s.x += s.x * this.speed
+            s.y += s.y * this.speed
+            this.ribid.linearVelocity = (s)
+        } else {
+            this.ribid.linearVelocity = (new cc.Vec2(0, 0))
+        } 
     }
 }
