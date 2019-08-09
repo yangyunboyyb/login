@@ -40,6 +40,7 @@ export default class rocker extends cc.Component {
         this.node.on(cc.Node.EventType.TOUCH_START,function(e: { getLocation: () => void; }){
             if (this.Rocker && this.Rocker.active == false) {
                 this.Rocker.active = true
+                this.stick.position = new cc.Vec2(0,0)
             }
             let w_pos = e.getLocation()
             let pos = this.node.convertToNodeSpaceAR(w_pos)
@@ -48,8 +49,11 @@ export default class rocker extends cc.Component {
    
         this.node.on(cc.Node.EventType.TOUCH_MOVE,function(e: any){
             let touch_p = this.node.convertToNodeSpaceAR(e.getLocation())
-			let p = this.rocker_p
-			
+            let p = this.rocker_p
+            if (p.x == 0 && p.y == 0) {
+                return
+            }
+	
 			let x = touch_p.x - p.x
 			let y = touch_p.y - p.y
 			
@@ -61,7 +65,6 @@ export default class rocker extends cc.Component {
                 touch_p.x = x
                 touch_p.y = y
             }
-
             this.stick.setPosition(touch_p)
         },this);
    
@@ -76,11 +79,25 @@ export default class rocker extends cc.Component {
         this.rocker_p = this.Rocker.position
         this.stick_p = this.stick.position
         this.play_p = this.play.position
-        
+
+        if (this.stick_p.x == 0 && this.stick_p.y == 0) {
+            this.ribid.linearVelocity = (new cc.Vec2(0, 0))
+            return
+        }
+
 		if (this.Rocker.active == true) {
-			let s = this.stick_p
+            let s = this.stick_p
+            let len = s.x * s.x + s.y * s.y
+            if (len < this.Max_r * this.Max_r) {
+                s.x = (s.x / Math.sqrt(len)) * this.Max_r
+                s.y = (s.y / Math.sqrt(len)) * this.Max_r
+            }
 			s.x += s.x * this.speed
             s.y += s.y * this.speed
+            if (s.x == NaN || s.y == NaN) { 
+                s.x = 0
+                s.y = 0
+            }
             this.ribid.linearVelocity = (s)
         } else {
             this.ribid.linearVelocity = (new cc.Vec2(0, 0))
