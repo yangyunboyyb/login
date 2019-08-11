@@ -397,8 +397,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 116,
-      "height": 118
+      "width": 92.8,
+      "height": 94.4
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -538,7 +538,7 @@
       "__uuid__": "55418850-e4d7-4b20-b7eb-c09758377d6b"
     },
     "_type": 0,
-    "_sizeMode": 1,
+    "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
       "__type__": "cc.Vec2",
@@ -2178,7 +2178,7 @@
     "play": {
       "__id__": 12
     },
-    "speed": 3,
+    "speed": 5,
     "_id": "feBU/YD0NFoqW5h69+xGKo"
   },
   {
