@@ -1,10 +1,11 @@
 {
-  "assets-sort-type": "name",
   "collision-matrix": [
     [
+      false,
       true,
-      true,
-      true,
+      true
+    ],
+    [
       true,
       true,
       true
@@ -12,74 +13,26 @@
     [
       true,
       true,
-      false,
-      false,
-      false,
-      true
-    ],
-    [
-      true,
-      false,
-      false,
-      false,
-      false,
-      true
-    ],
-    [
-      true,
-      false,
-      false,
-      false,
-      false,
-      true
-    ],
-    [
-      true,
-      false,
-      false,
-      false,
-      false,
-      true
-    ],
-    [
-      true,
-      true,
-      true,
-      true,
-      true,
-      true
+      false
     ]
   ],
-  "design-resolution-height": 640,
-  "design-resolution-width": 960,
   "excluded-modules": [],
   "facebook": {
     "appID": "",
     "audience": {
       "enable": false
     },
-    "enable": false,
     "live": {
       "enable": false
     }
   },
-  "fit-height": true,
-  "fit-width": false,
   "group-list": [
     "play",
     "wall",
-    "wall1",
-    "wall2",
-    "wall3",
-    "wall4"
+    "boundary"
   ],
-  "last-module-event-record-time": 1565153054066,
   "simulator-orientation": false,
-  "simulator-resolution": {
-    "height": 640,
-    "width": 960
-  },
+  "simulator-resolution": {},
   "use-customize-simulator": true,
-  "use-project-simulator-setting": false,
-  "start-scene": "current"
+  "use-project-simulator-setting": false
 }

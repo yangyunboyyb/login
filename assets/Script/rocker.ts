@@ -1,4 +1,4 @@
-import { toUnicode } from "punycode";
+import ribid from "./ribid";
 
 const {ccclass, property} = cc._decorator;
 
@@ -16,6 +16,9 @@ export default class rocker extends cc.Component {
     @property(cc.Node)
     play: cc.Node = null
 
+    @property(cc.Node)
+    obstacle: cc.Node = null
+
     @property()
     speed: number = 0.1
 
@@ -25,11 +28,15 @@ export default class rocker extends cc.Component {
 
     ribid: cc.RigidBody
 
+    ribid1: cc.RigidBody
+
     onLoad () {
         if (this.Rocker && this.Rocker.active == true) {
             this.Rocker.active = false
         }
         cc.director.getPhysicsManager().enabled = true
+
+        this.obstacle.getComponent(cc.RigidBody).angularVelocity = 100
 
         this.ribid = this.play.getComponent(cc.RigidBody)
         
