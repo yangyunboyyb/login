@@ -34,5 +34,12 @@
   "simulator-orientation": false,
   "simulator-resolution": {},
   "use-customize-simulator": true,
-  "use-project-simulator-setting": false
+  "use-project-simulator-setting": false,
+  "start-scene": "current",
+  "last-module-event-record-time": 0,
+  "design-resolution-width": 960,
+  "design-resolution-height": 640,
+  "fit-width": false,
+  "fit-height": true,
+  "assets-sort-type": "name"
 }
